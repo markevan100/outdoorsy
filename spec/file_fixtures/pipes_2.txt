@@ -1,2 +1,3 @@
-Isatou|Ceesay|isatou@recycle.com|EV|Watt Burner|10’
-Naomi|Uemura|n.uemura@gmail.com|unicycle|Free Rollers|2 feet
+Isatou|Ceesay|isatou@recycle.com|unicycle|Watt Burner|10’
+Naomi|Uemura|n.uemura@gmail.com|EV|Free Rollers|2 feet
+Naomi|Shihab Nye|n.shihab.nye@gmail.com|skates|Dream Seeker|200 ft

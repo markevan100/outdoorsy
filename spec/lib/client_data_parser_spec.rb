@@ -37,14 +37,39 @@ RSpec.describe ClientDataParser, type: :model do
         described_class.parse('spec/file_fixtures/pipes.txt')
         described_class.parse('spec/file_fixtures/pipes_2.txt')
 
-        expect(Vehicle.count).to eq 6
+        expect(Vehicle.count).to eq 7
       end
 
       it 'does not create duplicate customers' do
         described_class.parse('spec/file_fixtures/pipes.txt')
         described_class.parse('spec/file_fixtures/pipes_2.txt')
 
-        expect(Customer.count).to eq 4
+        expect(Customer.count).to eq 5
+      end
+    end
+  end
+
+  describe 'sort and return data with scopes' do
+    context 'when borrowers and vehicles are present' do
+      it 'sorts customers by vehicle type asc by default' do
+        described_class.parse('spec/file_fixtures/pipes.txt')
+        data = Customer.by_vehicle_type
+
+        expect(data.first.first_name).to eq 'Naomi'
+      end
+
+      it 'sorts customers by vehicle type desc when present' do
+        described_class.parse('spec/file_fixtures/pipes.txt')
+        data = Customer.by_vehicle_type('desc')
+
+        expect(data.first.first_name).to eq 'Steve'
+      end
+
+      it 'sorts customers by full name' do
+        described_class.parse('spec/file_fixtures/pipes_2.txt')
+        data = Customer.by_full_name
+
+        expect(data.last.last_name).to eq 'Uemura'
       end
     end
   end
